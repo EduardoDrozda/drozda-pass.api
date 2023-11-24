@@ -1,9 +1,10 @@
 import { app } from "./app";
+import { env } from "./env";
 
 app
   .listen({
     host: "0.0.0.0",
-    port: 33333,
+    port: env.PORT,
   })
   .then((address) => {
     console.log(`Server listening at ${address}`);
