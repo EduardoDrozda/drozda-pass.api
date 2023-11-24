@@ -1,15 +1,15 @@
-import { app } from "./app";
-import { env } from "./env";
+import { app } from './app'
+import { env } from './env'
 
 app
   .listen({
-    host: "0.0.0.0",
+    host: '0.0.0.0',
     port: env.PORT,
   })
   .then((address) => {
-    console.log(`Server listening at ${address}`);
+    console.log(`Server listening at ${address}`)
   })
   .catch((err) => {
-    console.error(err);
-    process.exit(1);
-  });
+    console.error(err)
+    process.exit(1)
+  })
