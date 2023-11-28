@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  drozda-pass__db:
+    container_name: drozda-pass__db
+    image: bitnami/postgresql
+    environment:
+      POSTGRES_PASSWORD: docker
+      POSTGRES_USER: docker
+      POSTGRES_DB: drozda-pass__db
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data:/var/lib/postgresql/data
