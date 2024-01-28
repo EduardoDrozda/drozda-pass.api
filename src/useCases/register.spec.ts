@@ -6,14 +6,14 @@ import { UserAlreadyExistsError } from './errors/user-already-exists-error'
 
 describe('Register User Case', () => {
   const userRepository = new InMemoryUsersRepository()
-  const registerUsecase = new RegisterUseCase(userRepository)
+  const sut = new RegisterUseCase(userRepository)
 
   beforeEach(() => {
     userRepository.users = []
   })
 
   it('it should be able to register a new user', async () => {
-    const { user } = await registerUsecase.execute({
+    const { user } = await sut.execute({
       name: 'John Doe',
       email: 'email@email.com',
       password: '123456',
@@ -24,7 +24,7 @@ describe('Register User Case', () => {
   })
 
   it('should hash user password upon registration', async () => {
-    const { user } = await registerUsecase.execute({
+    const { user } = await sut.execute({
       name: 'John Doe',
       email: 'email@email.com',
       password: '123456',
@@ -38,14 +38,14 @@ describe('Register User Case', () => {
   it('should not allow two users with the same email', async () => {
     const email = 'email@email.com'
 
-    await registerUsecase.execute({
+    await sut.execute({
       name: 'John Doe',
       email,
       password: '123456',
     })
 
     await expect(() =>
-      registerUsecase.execute({
+      sut.execute({
         name: 'John Doe',
         email,
         password: '123456',
