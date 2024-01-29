@@ -7,11 +7,10 @@ import { UserAlreadyExistsError } from './errors/user-already-exists-error'
 describe('Register User Case', () => {
   let userRepository: InMemoryUsersRepository
   let sut: RegisterUseCase
-  
+
   beforeEach(async () => {
     userRepository = new InMemoryUsersRepository()
     sut = new RegisterUseCase(userRepository)
-
   })
 
   it('it should be able to register a new user', async () => {
